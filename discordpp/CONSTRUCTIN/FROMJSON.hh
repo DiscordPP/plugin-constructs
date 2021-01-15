@@ -39,7 +39,7 @@
     construct.KEY = TYPE;
 
 inline void from_json(const json& j, CONSTRUCTNAME& construct) {
-    char* key;
+    const char* key;
     CONSTRUCTKEYS
 }
 
