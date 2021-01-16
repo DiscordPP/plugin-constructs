@@ -5,6 +5,8 @@
 #pragma once
 
 namespace discordpp {
+using json = nlohmann::json;
+template <typename T> using opt = std::optional<T>;
 template <typename T>
 using handleReadX = std::function<void(const bool error, const T res)>;
 using handleReadEmpty = std::function<void(const bool error)>;

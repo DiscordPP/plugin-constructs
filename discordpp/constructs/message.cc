@@ -7,7 +7,7 @@
 #include "message.hh"
 
 namespace discordpp {
-void MessageIn::get(const sptr<const handleWrite> &onWrite,
+/*void Message::get(const sptr<const handleWrite> &onWrite,
                     const sptr<const handleReadX<MessageIn>> &onRead) {
     bot->call(std::make_shared<Call>(
         std::make_shared<const std::string>("GET"),
@@ -18,7 +18,7 @@ void MessageIn::get(const sptr<const handleWrite> &onWrite,
             [onRead](bool error, const json &msg) {
                 (*onRead)(error, msg["body"].get<MessageIn>());
             })));
-}
+}*/
 /*void MessageIn::crosspost(sptr<const handleWrite> onWrite,
                           sptr<const handleReadX<Message>> onRead) {}
 void MessageIn::createReaction(const std::string &emoji) {}
