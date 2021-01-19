@@ -25,7 +25,7 @@ template <> struct adl_serializer<discordpp::Nonce> {
         } else if (j.is_string()) {
             n = j.get<std::string>();
         } else {
-            assert(false && "\"nonce\" wasn't a sting or int");
+            assert(false && "\"nonce\" wasn't a string or int");
         }
     }
 };
