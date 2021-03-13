@@ -7,8 +7,8 @@
 #endif // CONSTRUCTKEYS
 
 public:
-#define SNOWFLAKE sptr<const Snowflake>
-#define SNOWFLAKE_ARR sptr<const std::vector<Snowflake>>
+#define SNOWFLAKE sptr<const snowflake>
+#define SNOWFLAKE_ARR sptr<const std::vector<snowflake>>
 #define TIME DEF(std::string)
 #define DEF(TYPE) sptr<const TYPE>
 #define OPT(TYPE) opt<TYPE>

@@ -10,8 +10,8 @@
 
 #include <discordpp/bot.hh>
 
-#include "discordpp/types/nonce.hh"
-#include "discordpp/util/construct.hh"
+#include "../types/nonce.hh"
+#include "../util/construct.hh"
 #include "todo.hh"
 
 namespace discordpp {
@@ -36,10 +36,10 @@ enum StickerFormat : int{
 
 class CONSTRUCTNAME : public util::ConstructIn {
   public:
-#include "discordpp/CONSTRUCTIN/POPULATEVARS.hh"
+#include "../CONSTRUCTIN/POPULATEVARS.hh"
 };
 
-#include "discordpp/CONSTRUCTIN/FROMJSON.hh"
+#include "../CONSTRUCTIN/FROMJSON.hh"
 
 #undef CONSTRUCTKEYS
 #undef CONSTRUCTNAME
