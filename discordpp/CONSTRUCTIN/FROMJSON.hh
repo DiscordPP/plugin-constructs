@@ -12,22 +12,22 @@
 
 #define SNOWFLAKE                                                              \
     (j[key].is_null() ? nullptr : [&j, &key]() {                               \
-        Snowflake sf;                                                          \
+        snowflake sf;                                                          \
         std::istringstream(j[key].get<std::string>()) >> sf;                   \
-        return std::make_shared<Snowflake>(sf);                                \
+        return std::make_shared<snowflake>(sf);                                \
     }())
 #define SNOWFLAKE_ARR                                                          \
     (j[key].is_null() ? nullptr : [&j, &key]() {                               \
-        std::vector<Snowflake> sfs;                                            \
+        std::vector<snowflake> sfs;                                            \
         auto jk = j[key];                                                      \
         std::transform(jk.begin(), jk.end(), std::back_inserter(sfs),          \
                        [&key](const json &j) {                                 \
-                           Snowflake sf;                                       \
+                           snowflake sf;                                       \
                            std::istringstream(j[key].get<std::string>()) >>    \
                                sf;                                             \
                            return sf;                                          \
                        });                                                     \
-        return std::make_shared<const std::vector<Snowflake>>(std::move(sfs)); \
+        return std::make_shared<const std::vector<snowflake>>(std::move(sfs)); \
     }())
 #define TIME DEF(std::string)
 #define DEF(TYPE)                                                              \
@@ -38,8 +38,8 @@
     key = (const char *)#KEY;                                                  \
     construct.KEY = TYPE;
 
-inline void from_json(const json& j, CONSTRUCTNAME& construct) {
-    const char* key;
+inline void from_json(const json &j, CONSTRUCTNAME &construct) {
+    const char *key;
     CONSTRUCTKEYS
 }
 

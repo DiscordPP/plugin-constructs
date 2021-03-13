@@ -59,48 +59,64 @@ template <class BASE> class PluginConstructs : public BASE, virtual BotStruct {
     defHandler(WEBHOOKS_UPDATE, json);
     defHandler(INTERACTION_CREATE, json);
 
-  private:
-    template <typename T> struct ConstructedCall : protected Call {
-      public:
-        ConstructedCall(BotStruct *bot) : Call(), bot_(bot) {}
-
-#define defSetter(TYPE, NAME)                                                  \
-    ConstructedCall<T> NAME(const TYPE &NAME) {                                \
-        ConstructedCall<T>::NAME(std::make_shared<const TYPE>(NAME));          \
-    }                                                                          \
-    ConstructedCall<T> NAME(sptr<const TYPE> &NAME) {                          \
-        assert(this->NAME##_ == nullptr && "This call already has a(n) " #NAME \
-                                           "!");                               \
-        this->NAME##_ = NAME;                                                  \
-    }
-
-        defSetter(std::string, requestType);
-        defSetter(std::string, targetURL);
-        defSetter(json, body);
-        defSetter(handleWrite, onWrite);
-        ConstructedCall<T> onRead(const handleReadX<T> &onRead) {
-            ConstructedCall<T>::onRead(
-                std::make_shared<const handleReadX<T>>(onRead));
-        }
-        ConstructedCall<T> onRead(sptr<const handleReadX<T>> &onRead) {
-            assert(this->onRead_ == nullptr &&
-                   "This call already has an onRead!");
-            Call::onRead_ = std::make_shared<const handleRead>(
-                [this](bool error, const json &msg) {
-                    (*onRead_)(error, msg["body"].get<T>());
-                });
-        }
-
-        void go() {
-            bot_->call(std::make_shared<Call>(new ConstructedCall<T>(this)));
-        }
+    /*class CreateMessageCall
+        : public FileCall,
+          public std::enable_shared_from_this<CreateMessageCall> {
+        friend PluginConstructs;
 
       protected:
-        sptr<const handleReadX<T>> onRead_ = nullptr;
+        explicit CreateMessageCall(BotStruct *bot) : FileCall(bot) {}
+        using FileCall::target;
+        using FileCall::payload;
 
+    };*/
+
+    /*
       private:
-        BotStruct *bot_;
-    };
+        template <typename T> struct ConstructedCall : protected Call {
+          public:
+            ConstructedCall(BotStruct *bot) : Call(), bot_(bot) {}
+
+    #define defSetter(TYPE, NAME) \
+        ConstructedCall<T> NAME(const TYPE &NAME) { \
+            ConstructedCall<T>::NAME(std::make_shared<const TYPE>(NAME)); \
+        } \
+        ConstructedCall<T> NAME(sptr<const TYPE> &NAME) { \
+            assert(this->NAME##_ == nullptr && "This call already has a(n) "
+    #NAME \
+                                               "!"); \
+            this->NAME##_ = NAME; \
+        }
+
+            defSetter(std::string, requestType);
+            defSetter(std::string, targetURL);
+            defSetter(json, body);
+            defSetter(handleWrite, onWrite);
+            ConstructedCall<T> onRead(const handleReadX<T> &onRead) {
+                ConstructedCall<T>::onRead(
+                    std::make_shared<const handleReadX<T>>(onRead));
+            }
+            ConstructedCall<T> onRead(sptr<const handleReadX<T>> &onRead) {
+                assert(this->onRead_ == nullptr &&
+                       "This call already has an onRead!");
+                Call::onRead_ = std::make_shared<const handleRead>(
+                    [this](bool error, const json &msg) {
+                        (*onRead_)(error, msg["body"].get<T>());
+                    });
+            }
+
+            void go() {
+                bot_->call(std::make_shared<Call>(new
+    ConstructedCall<T>(this)));
+            }
+
+          protected:
+            sptr<const handleReadX<T>> onRead_ = nullptr;
+
+          private:
+            BotStruct *bot_;
+        };
+        */
 };
 
 } // namespace discordpp

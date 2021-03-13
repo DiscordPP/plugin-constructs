@@ -10,9 +10,9 @@
 
 #include <discordpp/bot.hh>
 
-#include "discordpp/types/nonce.hh"
-#include "discordpp/constructs/sticker.hh"
-#include "discordpp/util/construct.hh"
+#include "../types/nonce.hh"
+#include "sticker.hh"
+#include "../util/construct.hh"
 #include "todo.hh"
 
 namespace discordpp {
@@ -32,10 +32,10 @@ enum MessageActivityType : int{
 // clang-format on
 
 class CONSTRUCTNAME : public util::ConstructIn {
-#include "discordpp/CONSTRUCTIN/POPULATEVARS.hh"
+#include "../CONSTRUCTIN/POPULATEVARS.hh"
 };
 
-#include "discordpp/CONSTRUCTIN/FROMJSON.hh"
+#include "../CONSTRUCTIN/FROMJSON.hh"
 
 #undef CONSTRUCTKEYS
 #undef CONSTRUCTNAME
@@ -51,10 +51,10 @@ class CONSTRUCTNAME : public util::ConstructIn {
 // clang-format on
 
 class CONSTRUCTNAME : public util::ConstructIn {
-#include "discordpp/CONSTRUCTIN/POPULATEVARS.hh"
+#include "../CONSTRUCTIN/POPULATEVARS.hh"
 };
 
-#include "discordpp/CONSTRUCTIN/FROMJSON.hh"
+#include "../CONSTRUCTIN/FROMJSON.hh"
 
 #undef CONSTRUCTKEYS
 #undef CONSTRUCTNAME
@@ -68,10 +68,10 @@ class CONSTRUCTNAME : public util::ConstructIn {
 // clang-format on
 
 class CONSTRUCTNAME : public util::ConstructIn {
-#include "discordpp/CONSTRUCTIN/POPULATEVARS.hh"
+#include "../CONSTRUCTIN/POPULATEVARS.hh"
 };
 
-#include "discordpp/CONSTRUCTIN/FROMJSON.hh"
+#include "../CONSTRUCTIN/FROMJSON.hh"
 
 #undef CONSTRUCTKEYS
 #undef CONSTRUCTNAME
@@ -137,7 +137,7 @@ enum MessageFlag : int{
 // clang-format on
 
 class CONSTRUCTNAME : public util::ConstructIn {
-#include "discordpp/CONSTRUCTIN/POPULATEVARS.hh"
+#include "../CONSTRUCTIN/POPULATEVARS.hh"
     /*void get(const sptr<const handleWrite> &onWrite,
              const sptr<const handleReadX<Message>> &onRead);*/
 
@@ -224,7 +224,7 @@ class CONSTRUCTNAME : public util::ConstructIn {
     onRead);*/
 };
 
-#include "discordpp/CONSTRUCTIN/FROMJSON.hh"
+#include "../CONSTRUCTIN/FROMJSON.hh"
 
 #undef CONSTRUCTKEYS
 #undef CONSTRUCTNAME
