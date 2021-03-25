@@ -7,5 +7,5 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_library(${PROJECT_NAME} discordpp/constructs/message.cc)
 
-INCLUDE_DIRECTORIES(${discordpp_SOURCE_DIR} ${json_SOURCE_DIR})
-TARGET_LINK_LIBRARIES(${PROJECT_NAME} INTERFACE)
+target_include_directories(${PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(${PROJECT_NAME} PRIVATE discordpp)
