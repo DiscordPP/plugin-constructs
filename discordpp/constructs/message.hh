@@ -10,7 +10,6 @@
 
 #include <discordpp/bot.hh>
 
-#include "../types/nonce.hh"
 #include "sticker.hh"
 #include "../util/construct.hh"
 #include "todo.hh"
