@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <optional>
+
 namespace discordpp {
 using json = nlohmann::json;
 template <typename T> using opt = std::optional<T>;
