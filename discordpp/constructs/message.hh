@@ -6,6 +6,7 @@
 
 #include <string>
 
+#define JSON_USE_IMPLICIT_CONVERSIONS 0
 #include <nlohmann/json.hpp>
 
 #include <discordpp/bot.hh>
