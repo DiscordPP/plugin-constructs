@@ -15,16 +15,6 @@
 #include "todo.hh"
 
 namespace discordpp {
-enum ChannelType : int{
-    GUILD_TEXT = 0,
-    DM = 1,
-    GUILD_VOICE = 2,
-    GROUP_DM = 3,
-    GUILD_CATEGORY = 4,
-    GUILD_NEWS = 5,
-    GUILD_STORE = 6
-};
-
 // clang-format off
 #define CONSTRUCTNAME Channel
 #define CONSTRUCTKEYS \
@@ -57,4 +47,4 @@ class CONSTRUCTNAME : public util::ConstructIn {
 
 #undef CONSTRUCTKEYS
 #undef CONSTRUCTNAME
-}
+} // namespace discordpp
